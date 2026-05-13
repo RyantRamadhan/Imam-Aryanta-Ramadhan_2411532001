@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Praktikum: Instalasi Laravel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f8f9fa; /* Abu-abu sangat terang khas Bootstrap */
+            --text-dark: #212529; /* Hitam teks standar */
+            --text-secondary: #6c757d; /* Abu-abu teks sekunder */
+            --info-cyan: #0dcaf0; /* Biru Info (warna judul Portofolio Anda) */
+            --dark-navy: #212529; /* Warna navbar Anda */
+            --card-white: #ffffff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--info-cyan); /* Mengikuti warna judul di screenshot */
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        section {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Bayangan halus seperti kartu Anda */
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--info-cyan);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: #212529; /* Hitam Gelap */
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+
+        .img-container {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            text-align: center; /* Memaksa teks rata tengah */
+            margin-bottom: 5px; /* Jarak antar baris dirapatkan */
+            color: var(--text-secondary);
+        }
+
+        footer p strong {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .btn-github {
+            display: inline-block;
+            background-color: var(--info-cyan);
+            color: #fff;
+            padding: 10px 22px; /* Ukuran tombol diperkecil */
+            font-size: 0.95rem; /* Ukuran teks diperkecil */
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #0baccc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .grid-artisan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-artisan { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Laporan Praktikum Pemrograman Web</h1>
+        <div class="subtitle">Instalasi & Konfigurasi Dasar Laravel </div>
+    </header>
+
+    <section>
+        <h2>Pendahuluan</h2>
+        <p>
+            Praktikum ini merupakan langkah awal dalam mempelajari Framework Laravel. Fokus utamanya adalah menyiapkan lingkungan pengembangan (development environment) yang stabil menggunakan alat bantu seperti XAMPP sebagai server lokal dan Composer sebagai manajer dependensi PHP.
+            Laravel merupakah satu framework PHP yang pupuler yang dikembangkan oleh taylor otwell, Laravel merupakan proyek open source untuk mengembangkan aplikasi berbasis web dengan arsitektur MVC (Model – View – Controller).
+        </p>
+        <p>
+            Fokus utama dari modul praktikum ini mencakup penyiapan lingkungan pengembangan lokal menggunakan XAMPP sebagai web server, serta penggunaan Composer sebagai dependency manager untuk mengelola pustaka PHP yang dibutuhkan. Selain aspek backend, praktikum ini juga menyentuh integrasi alat bantu frontend modern seperti Vite untuk optimasi aset aplikasi
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 1: Instalasi Tools dan Konfigurasi</h2>
+        <p>Paastikan alat-alat yang dibutuhkan sudah terinstall di komputer kita. Mulai dari PHP, XAMPP/Laragon, Composer, Git, Node JS, dan NPM.</p>
+
+        <div class="img-container">
+            <img src="gambar/node-npm.png" alt="Screenshot Instalasi Terminal">
+        </div>
+         <div class="img-container">
+            <img src="gambar/php.png" alt="Screenshot Instalasi Terminal">
+        </div>
+         <div class="img-container">
+            <img src="gambar/composer.png" alt="Screenshot Instalasi Terminal">
+        </div>
+
+    </section>
+
+    <section>
+        <h2>Langkah 2: Membuat Proyek</h2>
+        <p>Setelah Composer siap, langkah berikutnya adalah mengunduh installer Laravel secara global dengan perintah composer global require laravel/installer. Kemudian, kita dapat membuat project baru dengan perintah</p>
+        
+        <div class="img-container">
+            <img src="gambar/laravel-new.png" alt="Proyek">
+        </div>
+
+        <p>Setelah itu, dijalankan perintah untuk membangun aset frontend </p>
+         <div class="img-container">
+            <img src="gambar/npm.png" alt="Proyek">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 3: Verifikasi Berhasil</h2>
+        <p>Aplikasi dijalankan dengan perintah php artisan serve dan diakses melalui alamat http://127.0.0.1:8000.</p>
+        
+        <div class="img-container">
+            <img src="gambar/artisan.png" alt="verifikasi">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 4: Routing & Controller</h2>
+        <p>Verifikasi dilakukan dengan mengakses URL http://127.0.0.1:8000/helo. Browser berhasil menampilkan teks "Hello World" sesuai dengan logika yang kita definisikan.</p>
+        <p>Kemudain kita akan mencoba print hello world. Disini saya melakukannya dengan membuat route baru mengarah ke /hello.</p>
+        <div class="img-container">
+            <img src="gambar/hello1.png" alt="Routing Hello World">
+        </div>
+        <div class="img-container">
+            <img src="gambar/hello2.png" alt="Routing Hello World">
+        </div>
+
+        <div class="grid-artisan">
+            <div>
+                <p><strong>Membuat Model:</strong></p>
+                <pre><code>php artisan make:model Siswa</code></pre>
+            </div>
+            <div>
+                <p><strong>Membuat Controller:</strong></p>
+                <pre><code>php artisan make:controller SiswaController</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Imam Aryanta Ramadhan</strong></p>
+        <p>Informatics Students - Andalas University</p>
+        <a href="https://github.com/RyantRamadhan/Imam-Aryanta-Ramadhan_2411532001_WEB" class="btn-github" target="_blank">
+            <i class="fab fa-github"></i> Lihat Repository Tugas
+        </a>
+    </footer>
+</div>
+
+</body>
+</html>
