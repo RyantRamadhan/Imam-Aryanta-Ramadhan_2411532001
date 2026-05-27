@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Praktikum: Laravel MVC & CRUD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f8f9fa;
+            --text-dark: #212529;
+            --text-secondary: #6c757d;
+            --info-cyan: #0dcaf0;
+            --dark-navy: #212529;
+            --card-white: #ffffff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--info-cyan);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        section {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--info-cyan);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 21px;
+        }
+
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .img-container {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .grid-artisan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .task-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--info-cyan);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        footer p strong {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .btn-github {
+            display: inline-block;
+            background-color: var(--info-cyan);
+            color: #fff;
+            padding: 10px 22px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #0baccc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-artisan { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Laporan Praktikum Pemrograman Web</h1>
+        <div class="subtitle">Migration, Seeding, Routing, Model, Controller, View</div>
+    </header>
+
+    <section>
+        <h2>Pendahuluan</h2>
+        <p>
+            Praktikum ini bertujuan untuk memberikan pemahaman dan keterampilan dasar kepada mahasiswa dalam membangun aplikasi web modern berbasis framework PHP dengan menerapkan konsep MVC (Model View Controller). Mahasiswa diharapkan mampu memahami struktur dan alur kerja Laravel
+            sebagai salah satu framework yang banyak digunakan dalam pengembangan aplikasi web. Selanjutnya praktikum ini bertujuan untuk melatih kemampuan mahasiswa dalam mengelola database menggunakan migration dan seeding, membuat serta mengatur routing aplikasi, membangun model
+            untuk interaksi data, membuat tampilan antarmuka menggunakan Blade Template, serta mengembangkan controller sebagai penghubung antara model dan view. 
+        </p>
+        <p>
+            Dengan mempelajari materi tersebut, kita mampu memahami proses pengembangan aplikasi secara terstruktur, efisien, dan mudah dipelihara. Pada akhir praktikum, mahasiswa diharapkan dapat
+            mengimplementasikan seluruh materi dalam bentuk aplikasi CRUD (Create, Read, Update, Delete) sederhana sehingga memiliki dasar yang kuat untuk mempelajari pengembangan aplikasi web tingkat lanjut seperti autentikasi, API, middleware, dan deployment aplikasi Laravel.
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 1: Konfigurasi Database</h2>
+        <p>
+            Proses awal diawali dengan melakukan konfigurasi koneksi database lokal pada file env.  Pengaturan disesuaikan dengan mengubah beberapa parameter utama seperti nama database yang digunakan, *username*, serta password bawaan dari server MySQL/XAMPP.
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/env.png" alt="Screenshot Konfigurasi .env">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 2: Pembuatan Migration </h2>
+        <p>
+            Migration adalah fitur Laravel yang digunakan untuk membuat dan mengelola struktur database menggunakan kode program.
+        <p>
+            Migration memudahkan developer dalam:
+            Membuat tabel, Mengubah struktur tabel, Menghapus tabel, Versioning database
+        </p>
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/migration1.png" alt="Screenshot File Kode Migration Products">
+        </div>
+
+        <div class="img-container">
+            <img src="gambar/migration2.png" alt="Screenshot Eksekusi Migration Products">
+        </div>
+
+        <p>
+            Menjalankan migration menggunakan perintah php artisan migrate , setelah dijalankan perintah tersebut maka secara otomatis tabel products akan terbentuk secara otomatis.
+        <p>Rollback berfungsi untuk membatalkan migration.</p>
+        <p>php artisan migrate:rollback digunakan untuk membatalkan migration dan php
+        artisan migrate:fresh digunakan untuk menjalankan ulang seluruh migration.</p>
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 3: Pembuatan Seeder </h2>
+        <p>
+            Seeding digunakan untuk mengisi data awal ke database.
+        <P>
+            Seeder sangat membantu saat:
+        </P>
+        <P>
+            Pengujian aplikasi, Membuat data dummy, Menyiapkan data awal sistem
+        </P>
+        </p>
+        <strong>
+            Membuat seeder
+        </strong>
+        <div class="img-container">
+            <img src="gambar/seeder1.png" alt="Screenshot Seeder Products">
+        </div>
+        <p>
+            File seeder berapa pada folder database/seeders
+        </p>
+        <strong>
+            Membuat Data Seeder
+        </strong>
+        <P>
+            Buka file ProductSeeder.php, kemudian ubah menjadi :
+        </P>
+        <div class="img-container">
+            <img src="gambar/seeder2.png" alt="Screenshot Seeder Products">
+        </div>
+        <p>
+            Tambahkan pemanggilan seeder pada file DatabaseSeeder.php :
+        </p>
+        <div class="img-container">
+            <img src="gambar/seeder3.png" alt="Screenshot Seeder Products">
+        </div>
+        <p>
+            Selanjutnya jalankan perintah php artisan db:seed
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 4: Pembuatan Model & Controller</h2>
+        <p>
+            Model digunakan untuk berinteraksi dengan database. Laravel menggunakan Eloquent ORM untuk
+            mempermudah manipulasi data. Sedagkan Controller digunakan untuk mengatur logika aplikasi. Controller menjadi penghubung antara model, view & request user
+        </p>
+        
+        <div class="grid-artisan">
+            <div>
+                <p><strong>Perintah Pembuatan Model:</strong></p>
+                <pre><code>php artisan make:model Product</code></pre>
+            </div>
+            <div>
+                <p><strong>Perintah Pembuatan Controller:</strong></p>
+                <pre><code>php artisan make:controller ProductController</code></pre>
+            </div>
+        </div>
+
+        <div class="img-container">
+            <img src="gambar/pc1.png" alt="Screenshot Model & Controller Products">
+        </div>
+        <P>
+            Menghubungkan route ke controller dengan menambahkan pada web.php
+        </P>
+
+        <div class="img-container">
+            <img src="gambar/rt1.png" alt="Screenshot Model & Controller Products">
+            <img src="gambar/rt2.png" alt="Screenshot Model & Controller Products">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 5: Pembuatan View (Blade Template)</h2>
+        <p>
+            View digunakan untuk menampilkan halaman kepada pengguna. Laravel menggunakan Blade Template Engine. File view berada pada folder resources/views.
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/view.png" alt="Screenshot Komponen View Blade Layout">
+        </div>
+
+        <p>
+            Jalankan dengan akses http://127.0.0.1:8000/products
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/view1.png" alt="Screenshot Komponen View Blade Layout">
+        </div>
+    </section>
+
+
+    <footer>
+        <p><strong>Imam Aryanta Ramadhan</strong></p>
+        <p>Informatics Student - Universitas Andalas</p>
+        <a href="https://github.com/RyantRamadhan/Imam-Aryanta-Ramadhan_2411532001_WEB" class="btn-github" target="_blank">
+            <i class="fab fa-github"></i> Lihat Repository Tugas
+        </a>
+    </footer>
+</div>
+
+</body>
+</html>
