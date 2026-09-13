@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Tugas: Aplikasi Mobile Widget Flutter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f8f9fa;
+            --text-dark: #212529;
+            --text-secondary: #6c757d;
+            --info-cyan: #0dcaf0;
+            --dark-navy: #212529;
+            --card-white: #ffffff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--info-cyan);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        section {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--info-cyan);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 21px;
+        }
+
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .img-container {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .grid-artisan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .task-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--info-cyan);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul {
+            margin-bottom: 21px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        footer p strong {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .btn-github {
+            display: inline-block;
+            background-color: var(--info-cyan);
+            color: #fff;
+            padding: 10px 22px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #0baccc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-artisan { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Laporan Tugas Aplikasi Mobile</h1>
+        <div class="subtitle">Widget Flutter: Basic Form, TextField, dan TextFormField</div>
+    </header>
+
+    <section>
+        <h2>Pendahuluan</h2>
+        <div class="task-box">
+            <p><strong>1. Basic Form</strong></p>
+            <p>
+                Basic Form merupakan widget yang berfungsi sebagai inputan nilai seperti TextField, TextFormField, CheckBox, Switch, Dropdown, Radio, Dialog, DatePicker, BottomSheet, Snackbar dan lain-lain. Basic Form digunakan untuk validasi dan mengelola inputan dari berbagai field. Form akan memberikan tampilan inputan kemudian inputan akan diperiksa apakah sudah sesuai dengan aturan atau format yang ditetapkan, selanjtunya data inputan akan diambil nilainya setelah proses pengecekan selesai dilakukan.
+            </p>
+        </div>
+
+        <div class="task-box">
+            <p><strong>2. TextField & TextFormField</strong></p>
+            <p>
+                TextField adalah widget yang digunakan untuk memasukkan text oleh pengguna, widget ini biasanya digunakan untuk membuat form inputan seperti form login, pencarian dll. Fitur TextField meliputi menerima input dari keyboard, memiliki property yang lengkap (style, decoration, jenis inputan), dan dapat mengelola teks menggunakan TextEditingController.
+            </p>
+            <p>
+                TextFormField adalah widget versi lengkap dari TextField yang secara otomatis terintegrasi dengan logika validasi dan manajemen state dari sebuah form. Fitur TextFormField meliputi interaksi dengan FormState untuk melakukan validasi secara kolektif dengan validate() method, serta menampilkan pesan error secara otomatis di bawah field jika validasi gagal.
+            </p>
+        </div>
+
+        <div class="task-box">
+            <p><strong>3. Konsep Penting Lainnya</strong></p>
+            <ul>
+                <li><strong>GlobalKey:</strong> Objek unik atau key yang digunakan untuk mengidentifikasi dan mengakses state secara global, artinya kita dapat mengakses widget dari widget mana saja.</li>
+                <li><strong>FormState:</strong> Kelas yang mengelola status dari Form, seperti status validasi setiap form inputan (TextFormField).</li>
+                <li><strong>validate():</strong> Fungsi pada FormState yang digunakan untuk menjalankan validasi pada setiap TextFormField yang ada di dalam Form. Jika fungsi validator mengembalikan String (pesan error), validate() akan menghentikan proses dan mengembalikan nilai false.</li>
+                <li><strong>setState():</strong> Method yang digunakan untuk memberitahu flutter bahwa state yang ada pada Stateful Widget telah berubah dan widget tersebut perlu untuk rebuild.</li>
+                <li><strong>Const:</strong> Kata kunci pada widget Flutter yang digunakan untuk membuat widget menjadi konstanta pada saat kompilasi (compile-time).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah-Langkah: Basic Form TextField</h2>
+        <p>
+            a) Buat file dart baru dengan nama form-textfield didalam folder lib.
+        </p>
+        <p>
+            b) Buat tampilan basic form dengan menggunakan Widget TextField untuk inputan, ElevatedButton untuk memberikan event listener.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app1.png" alt="Screenshot Tampilan Awal Basic Form">
+        </div>
+
+        <p>
+            c) Pada class_MyFormState tambahkan kode program berikut.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app2.png" alt="Screenshot Kode class_MyFormState">
+        </div>
+
+        <p>
+            d) Tambahkan property berikut pada Widget TextField.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app3.png" alt="Screenshot Kode TextField">
+        </div>
+
+        <p>
+            e) Tambahkan kode program berikut pada widget ElevatedButton.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app4.png" alt="Screenshot Kode ElevatedButton">
+        </div>
+
+        <p>
+            f) Simpan kemudian RUN maka akan tampil seperti gambar berikut.
+        </p>
+        <div class="img-container">
+            <img src="gambar/run1.png" alt="Screenshot Tampilan Akhir Basic Form">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah-Langkah: Basic Form TextFormField</h2>
+        <p>
+            a) Buat file baru didalam folder lib dengan nama form-textformfield
+        </p>
+        <p>
+            b) Buat form inputan menggunakan 2 buah widget TextFormField dan 1 buah ElevatedButton.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app5.png" alt="Screenshot Kode Inputan 2 TextFormField">
+        </div>
+
+        <p>
+            c) Tambahkan pada class MyFormTextState
+        </p>
+        <div class="img-container">
+            <img src="gambar/app6.png" alt="Screenshot Kode MyFormTextState">
+        </div>
+
+        <p>
+            d) Pada widget tampilan bungkus menggunakan widget Form dan tambahkan key: formKey.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app7.png" alt="Screenshot Kode Widget Form">
+        </div>
+
+        <p>
+            e) Ubah kode program pada TextFormField.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app8.png" alt="Screenshot Validator pada TextFormField">
+        </div>
+
+        <p>
+            f) Selanjutnya tambahkan method_submitForm pada method onPressed di ElevatedButton.
+        </p>
+        <div class="img-container">
+            <img src="gambar/app9.png" alt="Screenshot ElevatedButton onPressed">
+        </div>
+
+        <p>
+            g) Simpan dan RUN maka akan muncul seperti gambar berikut.
+        </p>
+        <div class="img-container">
+            <img src="gambar/run2.png" alt="Screenshot Tampilan Akhir TextFormField">
+        </div>
+    </section>
+
+    <section>
+        <h2>Tugas (Latihan)</h2>
+        <div class="task-box">
+            <p><strong>Instruksi Pengerjaan:</strong></p>
+            <ul>
+                <li>1. Buat 2 buah file dart yaitu main.dart dan user_registration_form.dart</li>
+                <li>2. Gunakan MaterialApp sebagai root pada main.dart</li>
+                <li>3. Set propreti home ke widget UserRegistrationForm</li>
+                <li>4. Gunakan statefulwidget pada UserRegistrationForm</li>
+                <li>5. Gunakan widget TextFormField untuk inputan, gunakan method validador untuk validasi.</li>
+                <li>6. Validasi: inputan email harus menggunakan format @, inputan password dan confirm password harus sama atau valid.</li>
+                <li>7. Gunakan method onPressed dan Ketika di pencet akan memanggil_submitForm.</li>
+            </ul>
+        </div>
+
+        <h3>Main.dart</h3>
+        <div class="img-container">
+            <img src="gambar/maind.png" alt="Screenshot Kode Main.dart">
+        </div>
+
+        <h3>user_registration_form.dart</h3>
+        <div class="img-container">
+            <img src="gambar/userd.png" alt="Screenshot Kode user_registration_form.dart">
+        </div>
+
+        <h3>view hasil codingan</h3>
+        <div class="img-container">
+            <img src="gambar/run3.png" alt="Screenshot View hasil codingan">
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Imam Aryanta Ramadhan</strong></p>
+        <p>Informatics Students - Andalas University</p>
+        <a href="https://github.com/RyantRamadhan/PrakAppMob_B_2411532001" class="btn-github" target="_blank">
+            <i class="fab fa-github"></i> Lihat Repository Tugas
+        </a>
+    </footer>
+</div>
+
+</body>
+</html>
