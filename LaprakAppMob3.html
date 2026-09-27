@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Praktikum: Aplikasi Mobile - Modul 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f8f9fa;
+            --text-dark: #212529;
+            --text-secondary: #6c757d;
+            --info-cyan: #0dcaf0;
+            --dark-navy: #212529;
+            --card-white: #ffffff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--info-cyan);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        section {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--info-cyan);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 21px;
+        }
+
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .img-container {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        ul {
+            margin-bottom: 21px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .grid-artisan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .task-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--info-cyan);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        footer p strong {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .btn-github {
+            display: inline-block;
+            background-color: var(--info-cyan);
+            color: #fff;
+            padding: 10px 22px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #0baccc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-artisan { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Laporan Praktikum Aplikasi Mobile 3</h1>
+        <div class="subtitle">Input Widgets & Forms: Menangkap Data, Dropdown, dan Validasi</div>
+    </header>
+
+    <section>
+        <h2>A. Pendahuluan</h2>
+        <p>
+            Validasi berfungsi untuk mencegah masuknya data yang tidak sesuai format sebelum disimpan ke dalam sistem. Validator adalah fungsi yang memeriksa isi kolom.
+        </p>
+        <ul>
+            <li><strong>Return Null:</strong> Data valid, tidak ada error.</li>
+            <li><strong>Return String:</strong> Data tidak valid, munculkan pesan error merah.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Langkah 1: Membuat File Baru</h2>
+        <p>
+            Langkah pertama adalah membuat file baru dengan nama add_transaction_screen.dart
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 2: Persiapan State & Controller</h2>
+        <p>
+            Gunakan Stateful Widget karena isi formulir (teks & dropdown) akan terus berubah saat pengguna mengetik. Siapkan GlobalKey untuk memicu validasi dan siapkan Controller untuk judul dan nominal.
+        </p>
+        <p>
+            Tahap ini membuat halaman input transaksi dengan form validasi, dua field teks (judul dan jumlah), serta dropdown kategori. Controller dibersihkan saat halaman ditutup agar tidak terjadi memory leak.
+        </p>
+        
+        <div class="img-container">
+            <img src="gambar/p3-1.png" alt="Screenshot Kode Persiapan State & Controller">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 3: Membuat Kolom Input (TextFormField)</h2>
+        <p>
+            Bungkus semua kolom dengan widget Form dan hubungkan kuncinya.Hubungkan controller masing-masing dan gunakan keyboardType: TextInputType.number khusus nominal.
+        </p>
+        <p>
+            Membangun sebuah form input transaksi dengan dua field utama: judul dan nominal.Field judul wajib diisi, sedangkan field nominal harus berupa angka bulat yang valid.Keduanya menggunakan TextFormField dengan dekorasi seperti label, border, dan ikon agar lebih jelas. Validasi dilakukan lewat validator untuk memastikan data tidak kosong dan sesuai format sebelum disimpan.
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/p3-2.png" alt="Screenshot Kode Kolom Input">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 4: Dropdown & Tombol Simpan</h2>
+        <p>
+            Gunakan DropdownButtonFormField untuk pilihan kategori dan tombol untuk mengeksekusi validasi keseluruhan.
+        </p>
+        <p>
+            Menambahkan dropdown kategori dan tombol simpan pada form transaksi. Dropdown memungkinkan pengguna memilih kategori dari daftar, lalu tombol simpan akan memvalidasi form. Jika valid, aplikasi menampilkan SnackBar hijau berisi konfirmasi data yang dimasukkan (judul dan nominal).
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/p3-4.png" alt="Screenshot Kode Dropdown dan Tombol Simpan">
+        </div>
+    </section>
+
+    <section>
+        <h2>Langkah 5: Hasil Akhir</h2>
+        <p>
+            Berikut adalah tampilan hasil akhir dari implementasi form input transaksi yang telah dilengkapi dengan validasi dan dropdown kategori.
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/ha1.png" alt="Screenshot UI Hasil Akhir Form Transaksi">
+        </div>
+    </section>
+
+    <section>
+        <h3>B. SOURCE CODE AKHIR</h3>
+        <p>
+            lib/add_transaction_screen.dart
+        </p>
+        <div class="img-container">
+            <img src="gambar/p3sc1.png" alt="Source Code Akhir Praktikum 3 Bagian 1">
+        </div>
+        <div class="img-container">
+            <img src="gambar/p3sc2.png" alt="Source Code Akhir Praktikum 3 Bagian 2">
+        </div>
+
+        <p>
+            lib/main.dart
+        </p>
+        <div class="img-container">
+            <img src="gambar/p3sc3.png" alt="Source Code Akhir Praktikum 3 Bagian 3">
+        </div>
+    </section>
+
+    <section>
+        <h2>C. Latihan/Tugas</h2>
+        <p>
+            Pada bagian latihan/tugas ini, tambahkan satu input baru sebelum tombol Simpan untuk mengisi Tanggal Transaksi.
+        </p>
+        <ul>
+            <li>Bisa menggunakan TextFormField biasa (format teks DD/MM/YYYY). </li>
+            <li>Tombol plus: gunakan fungsi showDatePicker</li>
+            <li>Berikan validasi wajib diisi! </li>
+        </ul>
+
+        <div class="img-container">
+            <img src="gambar/p3t1.png" alt="Screenshot Kode Latihan Input Tanggal">
+        </div>
+
+        <p>
+            <strong>Hasil akhir:</strong>
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/p3t2.png" alt="Screenshot UI Hasil Akhir Latihan Input Tanggal">
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Imam Aryanta Ramadhan</strong></p>
+        <p>Informatics Students - Andalas University</p>
+        <a href="https://github.com/RyantRamadhan/PrakAppMob_B_2411532001/tree/main/praktikum3">
+            <i class="fab fa-github"></i> Lihat Repository Tugas
+        </a>
+    </footer>
+</div>
+
+</body>
+</html>
