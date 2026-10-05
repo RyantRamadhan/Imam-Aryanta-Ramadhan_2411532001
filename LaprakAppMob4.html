@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Praktikum: Aplikasi Mobile Modul 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #f8f9fa;
+            --text-dark: #212529;
+            --text-secondary: #6c757d;
+            --info-cyan: #0dcaf0;
+            --dark-navy: #212529;
+            --card-white: #ffffff;
+            --border-light: #dee2e6;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--info-cyan);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        section {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--info-cyan);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 21px;
+        }
+
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .img-container {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .grid-artisan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .task-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--info-cyan);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background-color: var(--card-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            text-align: center;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
+
+        footer p strong {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .btn-github {
+            display: inline-block;
+            background-color: var(--info-cyan);
+            color: #fff;
+            padding: 10px 22px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            background-color: #0baccc;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-artisan { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Laporan Praktikum Aplikasi Mobile 4</h1>
+        <div class="subtitle">Navigasi & Passing Data Navigator, Konsep Stack, dan Constructor</div>
+    </header>
+
+    <section>
+        <h2>Pendahuluan</h2>
+        <p>
+            <strong>1) Konsep Tumpukan (Stack) di Flutter:</strong><br>
+            Navigator adalah Widget pengelola rute (halaman) yang bekerja seperti tumpukan kartu. Push (Maju) digunakan untuk meletakkan halaman baru di tumpukan teratas. Pop (Mundur) digunakan untuk menghapus atau menutup halaman teratas untuk kembali.
+        </p>
+        <p>
+            <strong>2) Constructor & Passing Data:</strong><br>
+            Untuk mengirim data dari Halaman A ke Halaman B, Halaman B harus menyiapkan variabel dan Constructor. Variabel Final digunakan sebagai tempat penampung data, misalnya untuk <em>title</em>. Required digunakan sebagai penanda bahwa data ini wajib diisi saat berpindah layer.
+        </p>
+    </section>
+
+    <section>
+        <h2>Langkah 1: Membuat Halaman Detail Transaksi</h2>
+        <p>
+            Langkah pertama adalah membuat file baru bernama detail_transaction_screen.dart. Kemudian siapkan penerima parameter title dan amount, deklarasikan variabel final, dan tampilkan data pada UI menggunakan teks. 
+        </p>
+
+        <div class="img-container">
+            <img src="gambar/p4l1.png" alt="Screenshot Source Code TransactionDetailScreen">
+        </div>
+
+        <p>
+            Membuat widget Flutter bernama TransactionDetailScreen yang menampilkan detail transaksi dengan AppBar merah, ikon struk, judul, dan jumlah uang berwarna merah tebal.
+        </p>
+        
+    </section>
+
+    <section>
+        <h2>Langkah 2: Pindah ke Detail & Mengirim Data (Push)</h2>
+        <p>
+            Buka kembali Dashboard. Pada widget ListTile daftar transaksi, tambahkan fungsi onTap. Gunakan Navigator.push dengan Material Page Route dan isi data constructor (title & amount) sesuai dengan data baris yang diklik.
+        </p>
+        
+        <div class="img-container">
+            <img src="gambar/p4l2.png" alt="Screenshot Navigasi Push dengan Data">
+        </div>
+
+        <p>
+            Membuat ListTile transaksi dengan ikon makanan, judul "Makan Siang", tanggal "Hari ini", dan nominal "- Rp 50.000". Saat ditekan, tile ini akan membuka halaman detail transaksi dengan data yang dipassing lewat Navigator.push.
+        </p>
+
+    </section>
+
+    <section>
+        <h2>Langkah 3: Menutup Layar / Kembali Otomatis (Pop)</h2>
+        <p>
+            Kembali ke file add_transaction_screen.dart(Modul 3). Kita ingin formulir otomatis tertutup dan kembali ke Dashboard setelah mengklik Simpan.
+        </p>
+        
+        <div class="img-container">
+            <img src="gambar/p4l3.png" alt="Screenshot Navigasi Pop">
+        </div>
+
+        <p>
+            Membuat sebuah tombol simpan menggunakan ElevatedButto dengan gaya latar merah dan teks putih. Saat ditekan, tombol akan memvalidasi form menggunakan formKey. Jika valid, akan muncul SnackBar hijau bertuliskan "Transaksi Berhasil Disimpan!" lalu aplikasi akan kembali ke halaman sebelumnya menggunakan Navigator.pop(context).
+        </p>
+
+    </section>
+
+    <section>
+        <h2>Langkah 4: Hasil Akhir Mockup Halaman Detail</h2>
+        <p>
+            Sekarang daftar transaksi di Dashboard bisa di-klik dan akan membuka detail yang berisi data lengkap. Tombol "Panah Kiri" otomatis muncul di AppBar berkat penggunaan Navigator.push Teks judul dan harga akan menyesuaikan dengan baris yang diklik.
+        </p>
+
+        <div class="grid-artisan">
+            <div class="img-container">
+                <img src="gambar/h4a1.png" alt="Mockup Dashboard Keuangan">
+            </div>
+            <div class="img-container">
+                <img src="gambar/h4a2.png" alt="Mockup Detail Transaksi">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Source Code Akhir</h2>
+        
+        <div class="task-box">
+            <p><strong>1. lib/main.dart</strong></p>
+        </div>
+        <div class="img-container">
+            <img src="gambar/sc4a1.png" alt="Source Code main.dart">
+        </div>
+
+        <div class="task-box">
+            <p><strong>2. lib/dashboard_screen.dart</strong></p>
+        </div>
+        <div class="img-container">
+            <img src="gambar/sc4a2.png" alt="Source Code dashboard_screen.dart">
+        </div>
+        <div class="img-container">
+            <img src="gambar/sc4a3.png" alt="Source Code dashboard_screen.dart">
+        </div>
+
+        <div class="task-box">
+            <p><strong>3. lib/add_transaction_screen.dart</strong></p>
+        </div>
+        <div class="img-container">
+            <img src="gambar/sc4a4.png" alt="Source Code add_transaction_screen.dart">
+        </div>
+
+        <div class="task-box">
+            <p><strong>4. lib/transaction_detail_screen.dart</strong></p>
+        </div>
+        <div class="img-container">
+            <img src="gambar/sc4a5.png" alt="Source Code transaction_detail_screen.dart">
+        </div>
+    </section>
+
+    <section>
+        <h2>Tugas / Latihan</h2>
+        <div class="task-box">
+            <p><strong>Input Tanggal</strong></p>
+            <ul>
+                <li>Tambahkan satu input baru sebelum tombol Simpan untuk mengisi Tanggal Transaksi.</li>
+                <li>Bisa menggunakan TextFormField biasa (format teks DD/MM/YYYY) atau tombol plus menggunakan fungsi showDatePicker.</li>
+                <li>Berikan validasi wajib diisi.</li>
+            </ul>
+        </div>
+
+        <div class="img-container">
+            <img src="gambar/h4a3.png" alt="Screenshot Implementasi DatePicker">
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Imam Aryanta Ramadhan</strong></p>
+        <p>Informatics Students - Andalas University</p>
+        <a href="https://github.com/RyantRamadhan/PrakAppMob_B_2411532001/tree/main/praktikum4">
+            <i class="fab fa-github"></i> Lihat Repository Tugas
+        </a>
+    </footer>
+</div>
+
+</body>
+</html>
